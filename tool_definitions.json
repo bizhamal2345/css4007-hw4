@@ -1,0 +1,62 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "lookup",
+      "description": "Retrieve one authoritative fact about a Nine Rivers district. Use exact district names, ignoring case and surrounding spaces. Exclude archived profiles and apply correction notices. Return value, unit, period and source document IDs, not whole documents. Water is normalised to cubic metres; budgets remain in million tenge. Use district='REGION', field='water_tariff_2025' for the regional tariff.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "district": {
+            "type": "string",
+            "description": "Exact district name, or REGION for the tariff.",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "field": {
+            "type": "string",
+            "enum": [
+              "population_2025",
+              "population_2020",
+              "area_km2",
+              "budget_million_tenge",
+              "water_m3",
+              "schools",
+              "pupils",
+              "road_km",
+              "founded",
+              "water_tariff_2025"
+            ]
+          }
+        },
+        "required": [
+          "district",
+          "field"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "calculate",
+      "description": "Evaluate arithmetic using numbers, parentheses, +, -, *, / and unary + or -. Use this tool for calculations. Names, function calls, attributes, powers and other operators are forbidden. Return a numeric result without rounding, or a structured error.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "expression": {
+            "type": "string",
+            "description": "Numbers and allowed arithmetic operators only.",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "required": [
+          "expression"
+        ],
+        "additionalProperties": false
+      }
+    }
+  }
+]
